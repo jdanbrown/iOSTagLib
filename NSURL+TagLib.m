@@ -15,7 +15,7 @@
 //_______________________________________________________________________________________________________________
 
 @implementation NSURL (TagLib)
-@dynamic artwork;
+// @dynamic artwork;
 @dynamic artistName;
 @dynamic trackTitle;
 @dynamic trackLength;
@@ -62,26 +62,26 @@
     return str;
 }
 
-- (UIImage*)artwork
-{
-    CFStringRef _path = (__bridge CFStringRef)(self.path);
-    CFDataRef   _data = NULL;
-    UIImage    *_img  = nil;
-    // Get data from file
-    if (!CopyCoverArtDataFromFileAtPath(_path, &_data))
-    {
-        goto exit;
-    }
-exit:
-    // Init image with data and release fata
-    if (_data)
-    {
-        _img = [UIImage imageWithData:(__bridge NSData *)(_data)];
-        CFRelease(_data);
-    }
-    // Return image
-    return _img;
-}
+// - (UIImage*)artwork
+// {
+//     CFStringRef _path = (__bridge CFStringRef)(self.path);
+//     CFDataRef   _data = NULL;
+//     UIImage    *_img  = nil;
+//     // Get data from file
+//     if (!CopyCoverArtDataFromFileAtPath(_path, &_data))
+//     {
+//         goto exit;
+//     }
+// exit:
+//     // Init image with data and release fata
+//     if (_data)
+//     {
+//         _img = [UIImage imageWithData:(__bridge NSData *)(_data)];
+//         CFRelease(_data);
+//     }
+//     // Return image
+//     return _img;
+// }
 
 - (NSUInteger)trackLength
 {
@@ -133,16 +133,16 @@ exit:
     taglib_file_free(file);
 }
 
-- (void)setArtwork:(UIImage*)artwork
-{
-    CFStringRef _path = (__bridge CFStringRef)(self.path);
-    CFDataRef   _data = (__bridge CFDataRef)(UIImageJPEGRepresentation(artwork, 1.0));
-    // Set artwork
-    if (!SetCoverArtDataToFileAtPath(_path, _data))
-    {
-        NSLog(@"Failed to write cover art image for file at path: %@", self.relativePath);
-    }
-}
+// - (void)setArtwork:(UIImage*)artwork
+// {
+//     CFStringRef _path = (__bridge CFStringRef)(self.path);
+//     CFDataRef   _data = (__bridge CFDataRef)(UIImageJPEGRepresentation(artwork, 1.0));
+//     // Set artwork
+//     if (!SetCoverArtDataToFileAtPath(_path, _data))
+//     {
+//         NSLog(@"Failed to write cover art image for file at path: %@", self.relativePath);
+//     }
+// }
 
 @end
 

@@ -14,7 +14,7 @@
 
 @interface NSURL (TagLib)
 
-@property (nonatomic, assign) UIImage  *artwork;
+// @property (nonatomic, assign) UIImage  *artwork;
 @property (nonatomic, assign) NSString *trackTitle;
 @property (nonatomic, assign) NSString *artistName;
 @property (nonatomic, readonly) NSUInteger trackLength;
